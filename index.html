@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Kalkee Growth Labs — Midnight Luxe</title>
+<meta name="description" content="Kalkee Growth Labs helps brands scale revenue through data-driven performance campaigns, a global affiliate partner network, and ROI-focused growth systems. Grow Faster. Succeed Together." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23a8741a'/%3E%3Cstop offset='1' stop-color='%23f2d488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='72' height='72' rx='16' fill='%230b2240'/%3E%3Cpath d='M18 14h8v44h-8z' fill='%23cfe0f0'/%3E%3Cpath d='M22 40C32 35 42 24 53 13' stroke='url(%23g)' stroke-width='8' fill='none' stroke-linecap='round'/%3E%3Cpath d='M44 10 58 8 55 23z' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:wght@300..800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KALKEE GROWTH LABS — classic redesign, true brand palette
+   Navy · Gold · Ivory  |  Fraunces + Hanken Grotesk
+   Logo recreated from brand mark (gold arrow-K + navy base)
+   ============================================================ */
+:root{
+  --ivory:#f6f1e6;
+  --ivory-2:#efe7d6;
+  --paper:#fbf7ef;
+  --ink:#10203a;
+  --ink-soft:#41506a;
+  --navy:#163b61;
+  --navy-deep:#0b2240;
+  --navy-bright:#2f6da0;
+  --sky:#7cc0e6;
+  --gold:#c4953c;
+  --gold-bright:#e6c074;
+  --gold-deep:#a8741a;
+  --mist:#b9c6d8;
+  --line:rgba(16,32,58,.14);
+  --line-strong:rgba(16,32,58,.28);
+  --shadow:0 30px 70px -40px rgba(11,34,64,.55);
+  --r:18px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --maxw:1240px;--surface-dark:#10203a;--on-dark:#f6f1e6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ivory);color:var(--ink);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-size:clamp(15px,1vw + 12px,17px);line-height:1.65;font-weight:400;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--navy);color:var(--on-dark)}
+h1,h2,h3,h4,.display{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:-.015em;font-optical-sizing:auto}
+
+.wrap{width:min(92%,var(--maxw));margin-inline:auto}
+.eyebrow{font-family:"Hanken Grotesk";font-weight:600;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);display:inline-block}
+
+/* buttons */
+.btn{--bg:var(--navy);--fg:var(--on-dark);display:inline-flex;align-items:center;gap:.6em;cursor:pointer;border:none;background:var(--bg);color:var(--fg);font-family:inherit;font-weight:600;font-size:.9rem;letter-spacing:.02em;padding:.95em 1.7em;border-radius:100px;position:relative;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease);box-shadow:0 14px 30px -18px rgba(11,34,64,.8)}
+.btn span{position:relative;z-index:1}
+.btn::after{content:"";position:absolute;inset:0;background:var(--navy-deep);transform:translateY(101%);transition:transform .45s var(--ease);z-index:0}
+.btn:hover{transform:translateY(-3px);box-shadow:0 22px 40px -18px rgba(11,34,64,.9)}
+.btn:hover::after{transform:translateY(0)}
+.btn--ghost{--bg:transparent;--fg:var(--ink);border:1.5px solid var(--line-strong);box-shadow:none}
+.btn--ghost::after{background:var(--surface-dark)}
+.btn--ghost:hover{--fg:var(--on-dark);border-color:var(--ink)}
+.btn--gold{--bg:var(--gold);--fg:var(--navy-deep)}
+.btn--gold::after{background:var(--gold-bright)}
+.btn--gold:hover{--fg:var(--navy-deep)}
+.arrow{transition:transform .4s var(--ease)}
+.btn:hover .arrow{transform:translate(3px,-3px)}
+
+/* brand lockup */
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand .mark{width:44px;height:44px;flex:0 0 auto}
+.brand .wm{font-family:"Fraunces";font-weight:600;font-size:1.34rem;letter-spacing:-.02em;line-height:1.02;color:var(--gold-deep)}
+.brand .wm b{font-weight:600;color:var(--navy)}
+.brand .wm small{display:block;font-family:"Hanken Grotesk";font-weight:600;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+
+/* ============ TOP BAR ============ */
+.topbar{background:var(--navy-deep);color:var(--mist);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;gap:1rem;flex-wrap:wrap}
+.topbar a{color:var(--gold-bright);font-weight:600}
+.topbar .tag{color:var(--gold-bright);font-family:"Fraunces";font-style:italic;text-transform:none;letter-spacing:.01em;font-size:.86rem}
+.topbar .dot{opacity:.4;margin:0 .3rem}
+
+/* ============ HEADER ============ */
+header.site{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--ivory) 82%,transparent);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid transparent;transition:padding .4s var(--ease),border-color .4s,box-shadow .4s,background .4s}
+header.site.scrolled{border-bottom-color:var(--line);box-shadow:0 12px 30px -28px rgba(11,34,64,.6);background:color-mix(in srgb,var(--ivory) 94%,transparent)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;transition:padding .4s var(--ease)}
+header.site.scrolled .nav{padding:.65rem 0}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{font-size:.93rem;font-weight:500;position:relative;padding:.3rem 0;color:var(--ink-soft);transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--gold);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:.8rem}
+.nav-cta .login{font-weight:600;font-size:.9rem;color:var(--navy)}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px;color:var(--ink)}
+.menu-btn svg{width:26px;height:26px}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:clamp(3rem,7vw,7rem) 0 clamp(3rem,6vw,5.5rem);overflow:hidden}
+.hero::before{content:"";position:absolute;top:-20%;right:-12%;width:60vw;height:60vw;max-width:760px;max-height:760px;background:radial-gradient(circle,rgba(22,59,97,.16),transparent 62%);border-radius:50%;z-index:0}
+.hero::after{content:"";position:absolute;left:-10%;bottom:-25%;width:42vw;height:42vw;max-width:540px;max-height:540px;background:radial-gradient(circle,rgba(196,149,60,.18),transparent 65%);border-radius:50%;z-index:0}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,4.5rem);align-items:center}
+.hero h1{font-size:clamp(2.7rem,6.2vw,5.3rem);font-weight:400;margin:1.4rem 0 0}
+.hero h1 .em{color:var(--navy);font-style:italic;font-weight:400}
+.hero h1 .gold{position:relative;white-space:nowrap;color:var(--gold-deep)}
+.hero h1 .gold::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.12em;background:linear-gradient(90deg,var(--gold),var(--gold-bright));opacity:.7;border-radius:2px;transform:scaleX(0);transform-origin:left;animation:underline 1s var(--ease) 1.2s forwards}
+@keyframes underline{to{transform:scaleX(1)}}
+.hero p.lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--ink-soft);max-width:46ch;margin:1.6rem 0 2.2rem;line-height:1.7}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:2.6rem;display:flex;align-items:center;gap:1rem;color:var(--ink-soft);font-size:.86rem}
+.hero-note .avatars{display:flex}
+.hero-note .avatars span{width:34px;height:34px;border-radius:50%;margin-left:-10px;border:2px solid var(--ivory);background:var(--navy);display:grid;place-items:center;color:var(--gold-bright);font-family:"Fraunces";font-size:.8rem;font-weight:600}
+.hero-note .avatars span:first-child{margin-left:0}
+.hero-note b{color:var(--ink);font-weight:700}
+.hero-panel{position:relative;background:var(--navy);color:var(--on-dark);border-radius:26px;padding:2.4rem 2.2rem;box-shadow:var(--shadow);overflow:hidden}
+.hero-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(230,192,116,.22),transparent 45%),radial-gradient(circle at 0% 100%,rgba(47,109,160,.55),transparent 55%)}
+.hero-panel .pc{position:relative;z-index:1}
+.hero-panel .ph{font-family:"Fraunces";font-style:italic;font-size:1.18rem;color:var(--gold-bright);margin-bottom:1.6rem}
+.stat-rows{display:grid;gap:1.1rem}
+.stat-row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-bottom:1.1rem;border-bottom:1px solid rgba(246,241,230,.16)}
+.stat-row:last-child{border-bottom:none;padding-bottom:0}
+.stat-row .num{font-family:"Fraunces";font-size:clamp(2rem,3.4vw,2.7rem);font-weight:500;line-height:1}
+.stat-row .num .suf{color:var(--gold-bright);font-size:.6em}
+.stat-row .lab{font-size:.82rem;color:var(--mist);max-width:14ch;text-align:right}
+
+/* ============ TRUSTED / MARQUEE ============ */
+.trusted{padding:2.6rem 0;border-block:1px solid var(--line);background:var(--ivory-2)}
+.trusted .label{text-align:center;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:1.4rem}
+.marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:3.4rem;width:max-content;animation:scroll 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.logo-item{font-family:"Fraunces";font-weight:600;font-size:1.35rem;color:var(--navy);opacity:.5;letter-spacing:-.01em;display:flex;align-items:center;gap:.5rem;transition:opacity .3s;white-space:nowrap}
+.logo-item:hover{opacity:.9}
+.logo-item .d{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* ============ SECTION SHELL ============ */
+.sec{padding:clamp(4rem,8vw,7.5rem) 0;position:relative}
+.sec-head{max-width:62ch}
+.sec-head h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:400;margin:1.1rem 0 0}
+.sec-head p{color:var(--ink-soft);margin-top:1.2rem;font-size:1.05rem;max-width:52ch}
+
+/* ============ ABOUT ============ */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center}
+.about-visual{position:relative;border-radius:24px;overflow:hidden;background:var(--navy-deep);min-height:430px;box-shadow:var(--shadow)}
+.about-visual .layer{position:absolute;inset:0}
+.about-visual .grid-bg{background-image:linear-gradient(rgba(230,192,116,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(230,192,116,.12) 1px,transparent 1px);background-size:46px 46px;opacity:.5}
+.about-visual .glow{background:radial-gradient(circle at 30% 25%,rgba(47,109,160,.85),transparent 60%),radial-gradient(circle at 78% 82%,rgba(196,149,60,.4),transparent 55%)}
+.chart{position:absolute;inset:auto 8% 14% 8%;display:flex;align-items:flex-end;gap:10px;height:55%}
+.chart .bar{flex:1;background:linear-gradient(180deg,var(--gold-bright),var(--gold));border-radius:6px 6px 0 0;transform-origin:bottom;transform:scaleY(0);transition:transform 1s var(--ease)}
+.chart .bar:nth-child(odd){background:linear-gradient(180deg,var(--sky),var(--navy-bright))}
+.in-view .chart .bar{transform:scaleY(1)}
+.about-visual .tag{position:absolute;top:8%;left:8%;color:var(--on-dark)}
+.about-visual .tag .k{font-family:"Fraunces";font-style:italic;font-size:1.05rem;color:var(--gold-bright)}
+.about-visual .tag .v{font-family:"Fraunces";font-size:2.6rem;font-weight:500;line-height:1}
+.about-copy p{color:var(--ink-soft);margin-top:1.3rem;font-size:1.06rem;line-height:1.75}
+.about-copy p .hl{color:var(--ink);font-weight:600}
+.mini-stats{display:flex;gap:2.4rem;margin:2.2rem 0;flex-wrap:wrap}
+.mini-stats .ms .n{font-family:"Fraunces";font-size:2.2rem;font-weight:500;color:var(--navy);line-height:1}
+.mini-stats .ms .l{font-size:.82rem;color:var(--ink-soft);letter-spacing:.04em}
+
+/* ============ SERVICES ============ */
+.services{background:var(--surface-dark);color:var(--on-dark)}
+.services .eyebrow{color:var(--gold-bright)}
+.services .sec-head h2{color:var(--on-dark)}
+.services .sec-head p{color:var(--mist)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:3.4rem;background:rgba(246,241,230,.12);border:1px solid rgba(246,241,230,.12);border-radius:20px;overflow:hidden}
+.svc{background:var(--surface-dark);padding:2.6rem 2.1rem;position:relative;transition:background .5s var(--ease);min-height:270px;display:flex;flex-direction:column}
+.svc::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-bright));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.svc:hover{background:#162a45}
+.svc:hover::before{transform:scaleX(1)}
+.svc .no{font-family:"Fraunces";font-style:italic;font-size:.95rem;color:var(--gold-bright);opacity:.85}
+.svc .ico{width:48px;height:48px;margin:1.4rem 0;color:var(--gold-bright)}
+.svc .ico svg{width:100%;height:100%;stroke-width:1.4}
+.svc h3{font-size:1.42rem;font-weight:500;color:var(--on-dark)}
+.svc p{color:var(--mist);font-size:.93rem;margin-top:.7rem;line-height:1.6}
+.svc .more{margin-top:auto;padding-top:1.2rem;color:var(--gold-bright);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.4s var(--ease)}
+.svc:hover .more{opacity:1;transform:none}
+
+/* ============ WHY US ============ */
+.why{background:var(--navy-deep);color:var(--on-dark);overflow:hidden;position:relative}
+.why::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(196,149,60,.2),transparent 45%)}
+.why .wrap{position:relative;z-index:1}
+.why .eyebrow{color:var(--gold-bright)}
+.why-top{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3.6rem}
+.why h2{font-size:clamp(2.1rem,4.6vw,3.6rem);color:var(--on-dark);font-weight:400}
+.why h2 .it{font-style:italic;color:var(--gold-bright)}
+.why-top p{color:var(--mist);max-width:42ch;font-size:1.04rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.why-card{background:rgba(246,241,230,.05);border:1px solid rgba(246,241,230,.12);border-radius:var(--r);padding:2.2rem 2rem;transition:transform .5s var(--ease),background .5s,border-color .5s}
+.why-card:hover{transform:translateY(-6px);background:rgba(246,241,230,.09);border-color:rgba(230,192,116,.45)}
+.why-card .n{font-family:"Fraunces";font-size:2.4rem;color:var(--gold-bright);font-weight:500}
+.why-card h3{font-size:1.3rem;margin:.8rem 0 .6rem;color:var(--on-dark);font-weight:500}
+.why-card p{color:var(--mist);font-size:.92rem}
+
+/* ============ QUOTE ============ */
+.quote{background:var(--ivory);padding:clamp(4.5rem,9vw,8rem) 0;text-align:center}
+.quote .mk{font-family:"Fraunces";font-size:5rem;color:var(--gold);line-height:.4;display:block;height:.5em;opacity:.8}
+.quote blockquote{font-family:"Fraunces";font-weight:400;font-size:clamp(1.7rem,4vw,3.1rem);line-height:1.25;max-width:18ch;margin:1.6rem auto 2rem;letter-spacing:-.01em}
+.quote blockquote .em{color:var(--navy);font-style:italic}
+.quote blockquote .g{color:var(--gold-deep)}
+.quote .by{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ============ FAQ ============ */
+.faq{background:var(--paper)}
+.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.faq-aside{position:sticky;top:120px}
+.faq-aside h2{font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-top:1rem}
+.faq-aside p{color:var(--ink-soft);margin:1.2rem 0 2rem}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:none;cursor:pointer;font-family:"Fraunces";font-size:1.15rem;font-weight:500;color:var(--ink);text-align:left;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;transition:color .3s}
+.faq-q:hover{color:var(--navy)}
+.faq-q .pm{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line-strong);display:grid;place-items:center;position:relative;transition:.4s var(--ease)}
+.faq-q .pm::before,.faq-q .pm::after{content:"";position:absolute;background:var(--surface-dark);transition:.4s var(--ease)}
+.faq-q .pm::before{width:12px;height:1.6px}
+.faq-q .pm::after{width:1.6px;height:12px}
+.faq-item.open .pm{background:var(--navy);border-color:var(--navy);transform:rotate(180deg)}
+.faq-item.open .pm::before,.faq-item.open .pm::after{background:var(--ivory)}
+.faq-item.open .pm::after{height:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.faq-a p{color:var(--ink-soft);padding-bottom:1.5rem;font-size:.97rem;max-width:60ch}
+
+/* ============ TESTIMONIALS ============ */
+.tst{background:var(--surface-dark);color:var(--on-dark);overflow:hidden}
+.tst .eyebrow{color:var(--gold-bright)}
+.tst .sec-head h2{color:var(--on-dark)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:3.4rem}
+.tcard{background:rgba(246,241,230,.04);border:1px solid rgba(246,241,230,.1);border-radius:var(--r);padding:2.1rem;display:flex;flex-direction:column;gap:1.1rem;transition:transform .5s var(--ease),border-color .5s}
+.tcard:hover{transform:translateY(-6px);border-color:rgba(230,192,116,.45)}
+.tcard .stars{color:var(--gold-bright);letter-spacing:.18em;font-size:.95rem}
+.tcard q{font-family:"Fraunces";font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--on-dark)}
+.tcard .who{display:flex;align-items:center;gap:.85rem;margin-top:auto;padding-top:.6rem;border-top:1px solid rgba(246,241,230,.1)}
+.tcard .who .av{width:42px;height:42px;border-radius:50%;background:var(--navy-bright);display:grid;place-items:center;font-family:"Fraunces";color:var(--gold-bright);font-weight:600}
+.tcard .who .nm{font-weight:600;font-size:.95rem}
+.tcard .who .rl{font-size:.8rem;color:var(--mist)}
+
+/* ============ CTA ============ */
+.cta{background:linear-gradient(135deg,var(--navy),var(--navy-deep));color:var(--on-dark);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(230,192,116,.22),transparent 45%),radial-gradient(circle at 90% 90%,rgba(47,109,160,.6),transparent 50%)}
+.cta .wrap{position:relative;z-index:1;text-align:center;padding-block:clamp(4rem,8vw,7rem)}
+.cta .eyebrow{color:var(--gold-bright);justify-content:center}
+.cta h2{font-size:clamp(2.2rem,5.5vw,4.4rem);font-weight:400;margin:1.2rem auto 1.6rem;max-width:16ch;color:var(--on-dark)}
+.cta h2 .it{font-style:italic;color:var(--gold-bright)}
+.cta p{color:var(--mist);max-width:48ch;margin:0 auto 2.4rem;font-size:1.08rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta .btn--ghost{--fg:var(--on-dark);border-color:rgba(246,241,230,.4)}
+.cta .btn--ghost::after{background:rgba(246,241,230,.14)}
+.cta .btn--ghost:hover{border-color:var(--on-dark)}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--ivory)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+.contact-info h2{font-size:clamp(2rem,4vw,3rem);font-weight:400;margin:1rem 0 1.5rem}
+.info-block{padding:1.4rem 0;border-top:1px solid var(--line);display:flex;gap:1.1rem}
+.info-block:last-child{border-bottom:1px solid var(--line)}
+.info-block .ic{flex:0 0 auto;width:42px;height:42px;border-radius:12px;background:var(--navy);color:var(--gold-bright);display:grid;place-items:center}
+.info-block .ic svg{width:20px;height:20px}
+.info-block h4{font-family:"Hanken Grotesk";font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:.3rem}
+.info-block p{color:var(--ink-soft);font-size:.96rem;line-height:1.55}
+.info-block a:hover{color:var(--navy)}
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(1.8rem,3vw,2.6rem);box-shadow:var(--shadow)}
+.form-card h3{font-size:1.5rem;font-weight:500;margin-bottom:.4rem}
+.form-card .sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:1.8rem}
+.field{margin-bottom:1.25rem}
+.field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.5rem}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);background:var(--ivory);border:1.5px solid var(--line);border-radius:12px;padding:.85rem 1rem;transition:border-color .3s,box-shadow .3s;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 4px rgba(22,59,97,.12)}
+.field.err input,.field.err textarea{border-color:#b5483a;box-shadow:0 0 0 4px rgba(181,72,58,.1)}
+.field .msg{font-size:.78rem;color:#b5483a;margin-top:.4rem;display:none}
+.field.err .msg{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-card .btn{width:100%;justify-content:center;margin-top:.4rem}
+.form-ok{display:none;text-align:center;padding:1rem 0}
+.form-ok.show{display:block;animation:pop .5s var(--ease)}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+.form-ok .ring{width:64px;height:64px;border-radius:50%;background:var(--navy);color:var(--gold-bright);display:grid;place-items:center;margin:0 auto 1rem;font-size:1.8rem}
+.form-ok h3{margin-bottom:.4rem}
+.form-ok p{color:var(--ink-soft)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--surface-dark);color:var(--mist);padding:clamp(3.5rem,6vw,5rem) 0 2rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(246,241,230,.12)}
+.foot-brand .brand .wm{color:var(--gold-bright)}
+.foot-brand .brand .wm b{color:var(--on-dark)}
+.foot-brand .brand .wm small{color:var(--mist)}
+.foot-brand p{margin-top:1.2rem;max-width:38ch;font-size:.92rem;line-height:1.7}
+.foot-social{display:flex;gap:.7rem;margin-top:1.6rem}
+.foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(246,241,230,.2);display:grid;place-items:center;color:var(--mist);transition:.3s}
+.foot-social a:hover{background:var(--gold);color:var(--navy-deep);border-color:var(--gold)}
+.foot-social svg{width:18px;height:18px}
+.foot-col h4{font-family:"Hanken Grotesk";color:var(--on-dark);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.3rem;font-weight:700}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.foot-col a,.foot-col li{font-size:.92rem;color:var(--mist);transition:color .3s;line-height:1.5}
+.foot-col a:hover{color:var(--gold-bright)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding-top:1.8rem;font-size:.82rem;color:rgba(185,198,216,.75)}
+.foot-bottom b{color:var(--on-dark);font-weight:600}
+.foot-bottom a:hover{color:var(--gold-bright)}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in-view{opacity:1;transform:none}
+.reveal[data-d="1"]{transition-delay:.08s}
+.reveal[data-d="2"]{transition-delay:.16s}
+.reveal[data-d="3"]{transition-delay:.24s}
+.reveal[data-d="4"]{transition-delay:.32s}
+.reveal[data-d="5"]{transition-delay:.4s}
+
+/* ============ MOBILE ============ */
+@media(max-width:980px){
+  .hero-grid,.about-grid,.faq-layout,.contact-grid,.why-top{grid-template-columns:1fr}
+  .svc-grid,.why-grid,.tst-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .faq-aside{position:static}
+  .hero-panel{margin-top:1rem}
+}
+@media(max-width:680px){
+  .nav-links,.nav-cta .login{display:none}
+  .menu-btn{display:grid;place-items:center}
+  .svc-grid,.why-grid,.tst-grid,.two,.foot-grid{grid-template-columns:1fr}
+  .topbar .wrap{justify-content:center;text-align:center;font-size:.66rem}
+  .topbar .hide-sm{display:none}
+  .mini-stats{gap:1.6rem}
+  .brand .wm{font-size:1.18rem}
+  .nav-links.open{display:flex;position:fixed;inset:0 0 auto;top:0;height:100dvh;flex-direction:column;justify-content:center;gap:2rem;background:var(--ivory);z-index:200;padding:2rem}
+  .nav-links.open a{font-family:"Fraunces";font-size:2rem;color:var(--ink)}
+  .drawer-close{display:none}
+  .nav-links.open .drawer-close{display:grid;position:absolute;top:1.5rem;right:1.5rem;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:none;cursor:pointer}
+  .nav-links.open .drawer-close svg{width:24px;height:24px}
+  .nav-links.open .m-cta{display:flex;gap:1rem;margin-top:1rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* === THEME: MIDNIGHT LUXE === */
+:root{
+  --ivory:#0c2140; --ivory-2:#0a1c38; --paper:#0e2545;
+  --ink:#f3ead6; --ink-soft:#a9b9cc;
+  --surface-dark:#07182f; --on-dark:#f3ead6;
+  --line:rgba(243,234,214,.14); --line-strong:rgba(243,234,214,.32);
+  --shadow:0 34px 80px -42px rgba(0,0,0,.8);
+}
+body{background:var(--ivory)}
+header.site{background:color-mix(in srgb,#0c2140 80%,transparent)}
+header.site.scrolled{background:color-mix(in srgb,#0c2140 92%,transparent)}
+.eyebrow{color:var(--gold-bright)}
+.nav-cta .login{color:var(--gold-bright)}
+.nav-links.open{background:var(--ivory)} .nav-links.open a{color:var(--ink)}
+.brand .wm{color:var(--gold-bright)} .brand .wm b{color:var(--ink)}
+.hero h1 .em{color:var(--sky)} .hero h1 .gold{color:var(--gold-bright)}
+.mini-stats .ms .n{color:var(--gold-bright)}
+.logo-item{color:var(--mist)}
+.quote blockquote .em{color:var(--sky)} .quote blockquote .g{color:var(--gold-bright)}
+.info-block h4{color:var(--gold-bright)}
+.svc:hover{background:#0e2545}
+.faq-item.open .pm{background:var(--gold);border-color:var(--gold)}
+.faq-item.open .pm::before,.faq-item.open .pm::after{background:var(--navy-deep)}
+.btn--ghost::after{background:var(--gold)}
+.btn--ghost:hover{--fg:var(--navy-deep);border-color:var(--gold)}
+.faq-q:hover{color:var(--gold-bright)}
+.info-block a:hover{color:var(--gold-bright)}
+.form-card .btn{--bg:var(--gold);--fg:var(--navy-deep)}
+.form-card .btn::after{background:var(--gold-bright)}
+/* subtle gold ambient glow on hero */
+.hero::after{background:radial-gradient(circle,rgba(230,192,116,.22),transparent 65%)}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="tag">Grow Faster. Succeed Together.</span>
+    <span class="hide-sm">Publisher payouts: weekly · bi-weekly · monthly <span class="dot">·</span> <a href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener">Become a partner →</a></span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site" id="top">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Kalkee Growth Labs home">
+        <svg class="mark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="kg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a8741a"/><stop offset=".45" stop-color="#d6a443"/><stop offset="1" stop-color="#f2d488"/></linearGradient>
+            <linearGradient id="kn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a78aa"/><stop offset="1" stop-color="#0c2545"/></linearGradient>
+            <linearGradient id="ks" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7cc0e6"/><stop offset="1" stop-color="#2f6da0"/></linearGradient>
+          </defs>
+          <path d="M14 12h10v48H14z" fill="url(#kn)"/>
+          <path d="M23 38 41 56a5 5 0 0 1-7 7L18 45z" fill="url(#kn)"/>
+          <path d="M20 44C30 40 40 30 56 20" stroke="url(#ks)" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/>
+          <path d="M20 40C31 35 41 24 53 13" stroke="url(#kg)" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M44 10 58 8 55 23z" fill="url(#kg)"/>
+          <g fill="#f2d488"><path d="M50 30l1.4 3.2 3.2 1.4-3.2 1.4-1.4 3.2-1.4-3.2-3.2-1.4 3.2-1.4z"/><path d="M61 26l1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></g>
+        </svg>
+        <span class="wm">Kalkee<b> Growth Labs</b><small>Grow Faster. Succeed Together.</small></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <button class="drawer-close" aria-label="Close menu" onclick="toggleMenu(false)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <li><a href="#about" onclick="toggleMenu(false)">About</a></li>
+        <li><a href="#services" onclick="toggleMenu(false)">Services</a></li>
+        <li><a href="#why" onclick="toggleMenu(false)">Why Us</a></li>
+        <li><a href="#faq" onclick="toggleMenu(false)">FAQ</a></li>
+        <li><a href="#contact" onclick="toggleMenu(false)">Contact</a></li>
+        <li class="m-cta">
+          <a class="btn btn--ghost" href="https://login.kalkeegrowth.com/" target="_blank" rel="noopener"><span>Login</span></a>
+          <a class="btn" href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener"><span>Apply Now</span></a>
+        </li>
+      </ul>
+      <div class="nav-cta">
+        <a class="login" href="https://login.kalkeegrowth.com/" target="_blank" rel="noopener">Login</a>
+        <a class="btn" href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener"><span>Apply Now</span> <span class="arrow">↗</span></a>
+        <button class="menu-btn" aria-label="Open menu" onclick="toggleMenu(true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">Grow Faster. Succeed Together.</span>
+        <h1>
+          <span class="reveal" data-d="1">Scale your revenue with</span><br>
+          <span class="reveal" data-d="2"><span class="em">performance</span> &amp; <span class="gold">affiliate</span> marketing</span>
+        </h1>
+        <p class="lead reveal" data-d="3">We help brands grow predictably through data-driven campaigns, a global affiliate partner network, and ROI-focused growth systems — not guesswork.</p>
+        <div class="hero-actions reveal" data-d="4">
+          <a class="btn" href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener"><span>Apply Now</span> <span class="arrow">↗</span></a>
+          <a class="btn btn--ghost" href="#contact"><span>Book a Call</span></a>
+        </div>
+        <div class="hero-note reveal" data-d="5">
+          <span class="avatars"><span>R</span><span>M</span><span>S</span><span>+</span></span>
+          <span>Joined by <b>2,400+ publishers</b> driving compliant, high-intent traffic.</span>
+        </div>
+      </div>
+      <aside class="hero-panel reveal" data-d="3">
+        <div class="pc">
+          <p class="ph">Built to scale. Backed by performance.</p>
+          <div class="stat-rows">
+            <div class="stat-row"><span class="num" data-count="312"><span class="val">0</span><span class="suf">%</span></span><span class="lab">avg. revenue lift across managed accounts</span></div>
+            <div class="stat-row"><span class="num" data-count="2400"><span class="val">0</span><span class="suf">+</span></span><span class="lab">vetted global affiliate publishers</span></div>
+            <div class="stat-row"><span class="num" data-count="48"><span class="val">0</span><span class="suf">M+</span></span><span class="lab">conversions tracked &amp; optimized</span></div>
+            <div class="stat-row"><span class="num" data-count="14"><span class="val">0</span><span class="suf"></span></span><span class="lab">verticals across US, CA, UK &amp; AU</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<div class="trusted">
+  <div class="wrap"><p class="label">Trusted by global brands &amp; affiliate partners</p></div>
+  <div class="marquee">
+    <div class="marquee-track" id="mq">
+      <span class="logo-item"><span class="d"></span>Northbeam</span>
+      <span class="logo-item"><span class="d"></span>Vantage Media</span>
+      <span class="logo-item"><span class="d"></span>Coreg Direct</span>
+      <span class="logo-item"><span class="d"></span>Apex Insure</span>
+      <span class="logo-item"><span class="d"></span>LeadForge</span>
+      <span class="logo-item"><span class="d"></span>Summit CPA</span>
+      <span class="logo-item"><span class="d"></span>Brightline</span>
+      <span class="logo-item"><span class="d"></span>MetricRoot</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="layer glow"></div>
+        <div class="layer grid-bg"></div>
+        <div class="tag"><div class="k">Quarterly trajectory</div><div class="v">+312%</div></div>
+        <div class="chart">
+          <span class="bar" style="height:34%"></span><span class="bar" style="height:48%"></span>
+          <span class="bar" style="height:42%"></span><span class="bar" style="height:62%"></span>
+          <span class="bar" style="height:58%"></span><span class="bar" style="height:80%"></span>
+          <span class="bar" style="height:72%"></span><span class="bar" style="height:100%"></span>
+        </div>
+      </div>
+      <div class="about-copy reveal" data-d="1">
+        <span class="eyebrow">About the lab</span>
+        <h2 style="font-size:clamp(1.9rem,4vw,3rem);font-weight:400;margin-top:1rem">Digital-agency problems, solved with real systems</h2>
+        <p>At Kalkee Growth Labs we combine <span class="hl">performance marketing, creative strategy, and advanced analytics</span> to help brands grow predictably — building sustainable revenue engines instead of one-off campaigns.</p>
+        <p>Our team engineers growth through affiliate marketing, paid media, conversion funnels, and high-converting digital assets. <span class="hl">We don't just run campaigns</span> — we create scalable systems that deliver consistent, measurable results.</p>
+        <div class="mini-stats">
+          <div class="ms"><div class="n">10+</div><div class="l">years in performance</div></div>
+          <div class="ms"><div class="n">100%</div><div class="l">manually-vetted traffic</div></div>
+          <div class="ms"><div class="n">24/7</div><div class="l">campaign monitoring</div></div>
+        </div>
+        <a class="btn" href="#contact"><span>Contact Us</span> <span class="arrow">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Scaling brands through performance &amp; affiliate marketing</h2>
+      <p>A full-stack growth offering — from first click to optimized conversion — delivered by specialists, not generalists.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="no">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 17l5-5 4 4 8-8"/><path d="M14 8h7v7"/></svg></div>
+        <h3>CPI Campaigns</h3>
+        <p>Cost-per-install campaigns engineered for quality installs and post-install retention, not vanity volume.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal" data-d="1">
+        <span class="no">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.5 7.5 15.5 16.5M18 9v.01M6 15v.01"/></svg></div>
+        <h3>Affiliate Marketing</h3>
+        <p>Performance-based partnerships where affiliates earn on real, tracked actions — leads, sign-ups and sales.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal" data-d="2">
+        <span class="no">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <h3>Global Publisher Network</h3>
+        <p>Thousands of vetted publishers across the US, Canada, UK and Australia, matched to your offer and vertical.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal">
+        <span class="no">04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18"/><path d="M5 8c0-2 2-3 7-3s7 1 7 3-2 3-7 3-7 1-7 3 2 3 7 3 7-1 7-3"/></svg></div>
+        <h3>Conversion Rate Optimization</h3>
+        <p>Systematic testing of funnels, creatives and landing pages to lift conversion and lower cost-per-action.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal" data-d="1">
+        <span class="no">05</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></div>
+        <h3>Website Development</h3>
+        <p>Fast, conversion-optimized sites and landing pages built to turn paid and affiliate traffic into revenue.</p>
+        <span class="more">Learn more →</span>
+      </article>
+      <article class="svc reveal" data-d="2">
+        <span class="no">06</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 19l7-7-4-4-7 7-3 7z"/><path d="M11 7l4 4"/></svg></div>
+        <h3>Creative &amp; Ad Production</h3>
+        <p>High-converting banners, video and ad creative tailored to each campaign — yours or built by our team.</p>
+        <span class="more">Learn more →</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec why" id="why">
+  <div class="wrap">
+    <div class="why-top">
+      <div class="reveal">
+        <span class="eyebrow">Why choose us</span>
+        <h2>Built to <span class="it">scale.</span><br>Backed by performance.</h2>
+      </div>
+      <p class="reveal" data-d="1">Growth isn't guesswork. We combine performance marketing, affiliate scale and data intelligence to deliver measurable, repeatable revenue.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="n">01</div><h3>Performance-Driven Execution</h3><p>You pay for outcomes. Every campaign is tied to clear KPIs and tracked from first click to final conversion.</p></div>
+      <div class="why-card reveal" data-d="1"><div class="n">02</div><h3>Global Affiliate Network</h3><p>Access a curated, manually-vetted network of publishers driving high-intent, compliant traffic at scale.</p></div>
+      <div class="why-card reveal" data-d="2"><div class="n">03</div><h3>Data-Led Optimization</h3><p>Real-time dashboards and continuous testing mean budget always flows to what is actually working.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="wrap reveal">
+    <span class="mk">&ldquo;</span>
+    <blockquote>We don't just run campaigns — we build <span class="em">revenue engines</span> that <span class="g">compound.</span></blockquote>
+    <p class="by">— The Kalkee Growth Labs philosophy</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+  <div class="wrap">
+    <div class="faq-layout">
+      <div class="faq-aside reveal">
+        <span class="eyebrow">FAQs</span>
+        <h2>Answers for affiliates &amp; brands</h2>
+        <p>Everything you need to know about partnering with Kalkee Growth Labs, getting approved, and getting paid.</p>
+        <a class="btn" href="#contact"><span>Still have questions?</span></a>
+      </div>
+      <div class="faq-list reveal" data-d="1" id="faqList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec tst">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What our partners say</h2>
+    </div>
+    <div class="tst-grid">
+      <article class="tcard reveal">
+        <div class="stars">★★★★★</div>
+        <q>Kalkee turned our affiliate channel from an afterthought into our highest-ROI line. The reporting is finally something I trust.</q>
+        <div class="who"><span class="av">DR</span><div><div class="nm">Dana Reyes</div><div class="rl">Head of Growth, Apex Insure</div></div></div>
+      </article>
+      <article class="tcard reveal" data-d="1">
+        <div class="stars">★★★★★</div>
+        <q>Approval was fast, payouts are reliably on time, and the campaign managers actually optimize with us. Best network we run.</q>
+        <div class="who"><span class="av">MK</span><div><div class="nm">Marcus Kane</div><div class="rl">Publisher, LeadForge Media</div></div></div>
+      </article>
+      <article class="tcard reveal" data-d="2">
+        <div class="stars">★★★★★</div>
+        <q>The creative and CRO work paid for itself in a quarter. Cost-per-action dropped while volume went up — exactly the goal.</q>
+        <div class="who"><span class="av">SP</span><div><div class="nm">Sara Patel</div><div class="rl">CMO, Brightline Direct</div></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <span class="eyebrow">Let's grow</span>
+    <h2>Let's create something <span class="it">extraordinary</span> together</h2>
+    <p>Whether you're a brand ready to scale or a publisher ready to earn, the next conversation is the start of your growth engine.</p>
+    <div class="cta-actions">
+      <a class="btn btn--gold" href="#contact"><span>Book a Call</span> <span class="arrow">↗</span></a>
+      <a class="btn btn--ghost" href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener"><span>Apply as a Publisher</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Contact us</span>
+        <h2>Start the conversation</h2>
+        <div class="info-block">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><h4>Address</h4><p>Aashray Pearl, Pale, Ambernath (E) 421501,<br>Thane, Maharashtra, India</p></div>
+        </div>
+        <div class="info-block">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><h4>Working Hours</h4><p>Monday – Friday · 8:00am – 6:00pm IST</p></div>
+        </div>
+        <div class="info-block">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <div><h4>Contact</h4><p>
+            <a href="tel:+919820713982">+91 98207 13982</a><br>
+            <a href="mailto:manissha@kalkeegrowth.com">manissha@kalkeegrowth.com</a><br>
+            <a href="mailto:kalkijm.advertising@gmail.com">kalkijm.advertising@gmail.com</a>
+          </p></div>
+        </div>
+      </div>
+      <div class="form-card reveal" data-d="1">
+        <form id="contactForm" novalidate>
+          <h3>Send us a message</h3>
+          <p class="sub">Tell us about your brand or your traffic — we'll reply within one business day.</p>
+          <div class="two">
+            <div class="field"><label for="fn">Full Name *</label><input id="fn" name="fn" type="text" placeholder="Jane Doe" required><span class="msg">Please enter your name.</span></div>
+            <div class="field"><label for="ph">Contact No *</label><input id="ph" name="ph" type="tel" placeholder="+91 00000 00000" required><span class="msg">Please enter a phone number.</span></div>
+          </div>
+          <div class="field"><label for="em">Email *</label><input id="em" name="em" type="email" placeholder="you@company.com" required><span class="msg">Please enter a valid email.</span></div>
+          <div class="field"><label for="ms">Message *</label><textarea id="ms" name="ms" rows="4" placeholder="What would you like to grow?" required></textarea><span class="msg">Please add a short message.</span></div>
+          <button class="btn" type="submit"><span>Submit</span> <span class="arrow">↗</span></button>
+        </form>
+        <div class="form-ok" id="formOk">
+          <div class="ring">✓</div>
+          <h3>Thank you!</h3>
+          <p>Your message is on its way. We'll be in touch shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <svg class="mark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="fg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a8741a"/><stop offset=".45" stop-color="#d6a443"/><stop offset="1" stop-color="#f2d488"/></linearGradient>
+            </defs>
+            <path d="M14 12h10v48H14z" fill="#cfe0f0"/>
+            <path d="M23 38 41 56a5 5 0 0 1-7 7L18 45z" fill="#9fb8d0"/>
+            <path d="M20 44C30 40 40 30 56 20" stroke="#7cc0e6" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/>
+            <path d="M20 40C31 35 41 24 53 13" stroke="url(#fg)" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <path d="M44 10 58 8 55 23z" fill="url(#fg)"/>
+            <g fill="#f2d488"><path d="M50 30l1.4 3.2 3.2 1.4-3.2 1.4-1.4 3.2-1.4-3.2-3.2-1.4 3.2-1.4z"/><path d="M61 26l1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1z"/></g>
+          </svg>
+          <span class="wm">Kalkee<b> Growth Labs</b><small>Grow Faster. Succeed Together.</small></span>
+        </a>
+        <p>Scaling brands through data-driven performance campaigns, a global affiliate network, and ROI-focused growth systems.</p>
+        <div class="foot-social">
+          <a href="https://www.linkedin.com/company/kalkee-growth-labs/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4zM8 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4 0 4.78 2.65 4.78 6.1V24h-4v-7c0-1.67-.03-3.8-2.3-3.8-2.3 0-2.65 1.8-2.65 3.67V24H8z"/></svg></a>
+          <a href="mailto:accounts@kalkeegrowth.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Aashray Pearl, Pale, Ambernath (E) 421501, Thane, India</li>
+          <li><a href="mailto:accounts@kalkeegrowth.com">accounts@kalkeegrowth.com</a></li>
+          <li><a href="tel:+919820713982">+91 98207 13982</a></li>
+          <li><a href="https://login.kalkeegrowth.com/" target="_blank" rel="noopener">Affiliate Login</a></li>
+          <li><a href="https://login.kalkeegrowth.com/publishers/register" target="_blank" rel="noopener">Become a Publisher</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 <b>Kalkee Growth Labs.</b> All rights reserved.</span>
+      <span>A venture operated by <b>Shresth Incorporation.</b> &nbsp;·&nbsp; <a href="#">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(open){
+  document.getElementById('navLinks').classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+/* seamless marquee */
+const mq = document.getElementById('mq'); mq.innerHTML += mq.innerHTML;
+/* header scroll */
+const header = document.querySelector('header.site');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 24), {passive:true});
+/* FAQ */
+const faqs = [
+  ["What is affiliate marketing?","A performance-based model where affiliates earn a commission for promoting products or services and driving qualified traffic or sales to a company's website."],
+  ["How do I earn money from your campaigns?","You earn when users complete specific tracked actions through your unique links — submitting a lead form, requesting an insurance quote, or signing up for a co-reg offer."],
+  ["What types of offers do you provide?","A range of verticals including Auto Insurance, Final Expense Insurance, Coreg links, and general CPA offers like form-fills and email submits."],
+  ["What is a Coreg (co-registration) offer?","Coreg offers present opt-in opportunities to users right after they complete a main lead form, boosting earnings by monetizing intent-based traffic."],
+  ["How can I track my performance?","Once approved, you get access to our affiliate dashboard to monitor clicks, conversions, earnings, and other key metrics in real time."],
+  ["Do you provide creatives and landing pages?","Yes — high-converting creatives, banners, and landing pages tailored to each campaign. You're also welcome to use your own, subject to approval."],
+  ["Can I run paid traffic to your offers?","Yes, paid traffic is allowed for many offers, provided you follow the specific traffic guidelines and compliance rules for each campaign."],
+  ["How often are payments made?","Flexible terms — weekly, bi-weekly, or monthly — based on your volume and history, paid via PayPal, ACH, or bank transfer."],
+  ["What geos do your offers support?","Primarily U.S. traffic, with select campaigns also accepting Canada, Australia, or the UK. Each offer specifies its allowed locations."],
+  ["How do I get started as an affiliate?","Sign up, choose your preferred campaigns, and start promoting. Our team assists with setup, optimization, and compliance."],
+  ["Do I need a website to promote your offers?","No. You can promote via email, social, native ads, search, or SMS — depending on each campaign's compliance guidelines."],
+  ["What is the approval process for new affiliates?","We manually review every application for quality and compliance, and may ask about your traffic sources, experience, and promotional methods."],
+  ["Can I promote multiple offers at the same time?","Absolutely — run multiple campaigns across verticals as long as your traffic strategy aligns with each offer's guidelines."]
+];
+const list = document.getElementById('faqList');
+faqs.forEach(([q,a])=>{
+  const item=document.createElement('div'); item.className='faq-item';
+  item.innerHTML=`<button class="faq-q" aria-expanded="false">${q}<span class="pm"></span></button><div class="faq-a"><p>${a}</p></div>`;
+  list.appendChild(item);
+});
+list.addEventListener('click', e=>{
+  const btn=e.target.closest('.faq-q'); if(!btn) return;
+  const item=btn.parentElement, ans=item.querySelector('.faq-a');
+  const open=item.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+  ans.style.maxHeight = open ? ans.scrollHeight+'px' : 0;
+});
+/* reveal */
+const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in-view');io.unobserve(en.target);}});},{threshold:.16});
+document.querySelectorAll('.reveal, .about-visual').forEach(el=>io.observe(el));
+/* counters */
+const fmt=n=>n.toLocaleString('en-US');
+const cio=new IntersectionObserver((es)=>{es.forEach(en=>{
+  if(!en.isIntersecting) return;
+  const el=en.target, target=+el.dataset.count, valEl=el.querySelector('.val'), dur=1500, t0=performance.now();
+  const step=(t)=>{const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3); valEl.textContent=fmt(Math.round(target*e)); if(p<1) requestAnimationFrame(step);};
+  requestAnimationFrame(step); cio.unobserve(el);
+});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(c=>cio.observe(c));
+/* form */
+const form=document.getElementById('contactForm');
+form.addEventListener('submit', e=>{
+  e.preventDefault(); let ok=true;
+  form.querySelectorAll('input,textarea').forEach(f=>{
+    const wrap=f.closest('.field'); let valid=f.value.trim()!=='';
+    if(f.type==='email') valid=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value.trim());
+    wrap.classList.toggle('err',!valid); if(!valid) ok=false;
+  });
+  if(!ok) return;
+  form.style.display='none'; document.getElementById('formOk').classList.add('show');
+});
+form.querySelectorAll('input,textarea').forEach(f=>f.addEventListener('input',()=>f.closest('.field').classList.remove('err')));
+</script>
+</body>
+</html>
